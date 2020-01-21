@@ -106,8 +106,6 @@ function uniquifyArray(arr) {
   }
 }
 
-uniquifyArray(wordsUnique);
-
 // Iteration #6: Find elements
 const wordsFind = [
   'machine',
