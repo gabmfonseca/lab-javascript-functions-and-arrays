@@ -19,8 +19,8 @@ function findLongestWord(arr) {
     if (arr[i].length > longestWord.length) {
       longestWord = arr[i];
     }
-    return longestWord;
   }
+  return longestWord;
 }
 
 findLongestWord(words);
@@ -97,13 +97,13 @@ const wordsUnique = [
 ];
 
 function uniquifyArray(arr) {
-  newArray = [];
+  let newArray = [];
   for (let i = 0; i < arr.length; i++) {
     if (newArray.indexOf(arr[i]) === -1) {
       newArray.push(arr[i]);
     }
-    return newArray;
   }
+  return newArray;
 }
 
 uniquifyArray(wordsUnique);
@@ -120,6 +120,15 @@ const wordsFind = [
   'disobedience'
 ];
 
+function doesWordExist(array, word) {
+  for (let i = 0; i < array.length; i++) {
+    if (array.includes(word)) {
+      return true;
+    }
+  }
+  return false;
+}
+
 // Iteration #7: Count repetition
 const wordsCount = [
   'machine',
@@ -134,6 +143,18 @@ const wordsCount = [
   'disobedience',
   'matter'
 ];
+
+function howManyTimes(array, word) {
+  let indices = [];
+  if ((array.length = 0)) {
+    return 0;
+  } else if (array.indexOf(word) === -1) {
+    return 0;
+  } else {
+    indices.push(array.indexOf(word));
+    return indices.length;
+  }
+}
 
 // Iteration #8: Bonus
 
@@ -159,3 +180,29 @@ const matrix = [
   [20, 73, 35, 29, 78, 31, 90, 1, 74, 31, 49, 71, 48, 86, 81, 16, 23, 57, 5, 54],
   [1, 70, 54, 71, 83, 51, 54, 69, 16, 92, 33, 48, 61, 43, 52, 1, 89, 19, 67, 48]
 ];
+
+const greatestProduct = matrix => {
+  let greatest = 0;
+  const rowCount = matrix.length;
+  const columnCount = matrix[0].length;
+
+  for (let r = 0; r < rowCount; r++) {
+    for (let i = 0; i < columnCount - 3; i++) {
+      const product = matrix[r][i] * matrix[r][i + 1] * matrix[r][i + 2] * matrix[r][i + 3];
+      if (product > greatest) {
+        greatest = product;
+      }
+    }
+  }
+
+  for (let c = 0; c < columnCount; c++) {
+    for (let i = 0; i < rowCount - 3; i++) {
+      const product = matrix[i][c] * matrix[i + 1][c] * matrix[i + 2][c] * matrix[i + 3][c];
+      if (product > greatest) {
+        greatest = product;
+      }
+    }
+  }
+
+  return greatest;
+};
